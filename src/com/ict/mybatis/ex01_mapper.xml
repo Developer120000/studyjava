@@ -7,9 +7,11 @@
 	<!--
 	  - select 문의 resultType 에서 여러 줄이 나와도 List<VO> 아니다. 그냥 VO 타입이다.
 	  - select, insert, update, delete 공통
+	  - insert, update, delete 는 결과가 돌아오는게 아니라 실행하는거기 때문에 결과타입을 지정하는 resultType 안쓴다.
 	<select id="외부에서 호출할 때 사용할 id" resultType="결과타입(VO 또는 int)" [parameterType="외부에서 들어오는 정보타입" ]>
 		실제 사용할 쿼리
 	</select>
+	 파라미터 = 외부에서 들어오는 값
 	 파라미터가 한 개 일 때는 VO 또는 String, int 등 사용가능 (파라미터는 대부분 String) 
 	 파라미터가 두 개 ~ 여러개 인 경우 VO 사용, VO는 컬럼명 맞춰야함
 	 ? 자리대신에 #{컬럼명} 넣기

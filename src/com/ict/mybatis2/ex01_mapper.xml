@@ -11,17 +11,19 @@
 	<select id="getSelectOne" resultType="com.ict.mybatis2.Ex01_VO" parameterType="String">
 		select * from Members where idx = #{idx}
 	</select>
-	
+	<!-- insert 는 무조건 결과타입이 int 이므로 resultType 쓰지 않는다 -->
 	<!-- insert, update, delete 는 parameterType 만 있다 -->
 	<insert id="getInsert" parameterType="com.ict.mybatis2.Ex01_VO">
 		insert into Members(idx, id, pw, username, age, regdate)
 		values(#{idx}, #{id}, #{pw}, #{username}, #{age}, sysdate)
 	</insert>
 	
+	<!-- 파라미터가 String 일때 -->
 	<delete id="getDelete" parameterType="String">
 		delete from Members where idx = #{idx}
 	</delete>
 	
+	<!-- 파라미터가 VO 일때 -->
 <!-- 	<delete id="getDelete2" parameterType="com.ict.mybatis2.Ex01_VO"> -->
 <!-- 		delete from Members where idx = #{idx} -->
 <!-- 	</delete> -->

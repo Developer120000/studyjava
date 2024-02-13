@@ -3,6 +3,9 @@ package com.ict.mybatis2;
 import java.util.List;
 import java.util.Scanner;
 
+//**순서 매우 중요**
+//사용자 > Main > DAO > mapper > DB > mapper > DAO > Main > 출력
+
 public class Ex01_Main {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
@@ -26,7 +29,10 @@ public class Ex01_Main {
 		case 1:
 			System.out.println("검색할 idx : ");
 			String idx = scan.next();
+//			idx 검색 - 기본키 - 하나 - VO 로 나온다.
+//			하나인지 여러개인지 모를때는 여러개로 받자 - 리스트로 받아서 size() 를 체크하자
 			Ex01_VO vo = Ex01_DAO.getOne(idx);
+//			vo 받는 prn 메서드를 만들자(오버로딩)
 			prn(vo);
 			break;
 		case 2:
@@ -42,16 +48,23 @@ public class Ex01_Main {
 			System.out.println("나이 : ");
 			String age = scan.next();
 			
-			// 날짜는 오늘 날짜로
+			// 날짜는 오늘 날짜로 sysdate 사용
+//			파라미터가 여러개 - VO 로 만들자
 			Ex01_VO vo2 = new Ex01_VO();
+//			setter 를 이용하여 받은 정보 넣어주자
 			vo2.setIdx(idx2);
 			vo2.setId(id);
 			vo2.setPw(pw);
 			vo2.setUsername(username);
 			vo2.setAge(age);
 			
+//			insert, delete, update 는 결과가 무조건 int
 			int result = Ex01_DAO.getIns(vo2);
+//			삽입 성공 시 테이블 전체 데이터 보기
 			if(result > 0) {
+//				위에 있는 list 를 사용하면 DB 갔다온게 아니기 때문에 
+				//	삽입 성공 후 변경된 테이블을 볼 수 없다.
+				//	다시 DB 에 가서 리스트를 가져오자
 				List<Ex01_VO> list2 = Ex01_DAO.getList();
 				main.prn2(list2);
 			}else {

@@ -8,19 +8,20 @@ public class Ex04 {
 	public static void main(String[] args) {
 		// 정수배열을 스트림으로 활용하기
 		int[] arr = {1, 2, 3, 4, 5};
+		// 스트림의 최종처리를 int 변수에 저장
 		int sumVal = Arrays.stream(arr).sum();
 		int count = (int) Arrays.stream(arr).count(); // count 가 long 형이라 오류, int 로 변환 해야한다.
 		
 		System.out.println("합계 : " + sumVal);		
 		System.out.println("카운트 : " + count);	
 		
+		// IntStream 을 사용해서 배열을 스트림으로
 		IntStream str = Arrays.stream(arr);
 		IntStream str1 = IntStream.of(arr);
 		str.forEach(i -> System.out.print(i));
 		System.out.println();
 		str1.forEach(i -> System.out.print(i));
 		System.out.println();
-		
 		
 		
 		int[] arr1 = {1, 2, 3, 4, 5};

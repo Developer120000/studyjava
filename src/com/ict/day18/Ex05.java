@@ -36,12 +36,12 @@ public class Ex05 {
 		stream5.sorted(Comparator.reverseOrder()).forEach(i -> System.out.print(i + " "));
 		System.out.println();
 
-		// 정렬 오름차순 (숫자 => 영어 => 한글), 대소문자 출력 순서는 먼저 생성된게 먼저 출력된다. // 컬렉션 없이 바로 스트림 만들기
+		// 정렬 오름차순 (숫자 => 영어 => 한글), 대소문자 무시하고 비교, 대소문자는 생성순서대로 출력 // 컬렉션 없이 바로 스트림 만들기
 		Stream<String> stream6 = Stream.of(new String[] {"BB", "a", "0", "라", "CC", "3", "dd", "bb", "A", "가", "마"});
 		stream6.sorted(String.CASE_INSENSITIVE_ORDER).forEach(i -> System.out.print(i + " "));
 		System.out.println();
 		
-		// 정렬 내림차순 (한글 => 영어 => 숫자), 대소문자 출력 순서는 먼저 생성된게 먼저 출력된다. // 컬렉션 없이 바로 스트림 만들기
+		// 정렬 내림차순 (한글 => 영어 => 숫자), 대소문자 무시하고 비교, 대소문자는 생성순서대로 출력 // 컬렉션 없이 바로 스트림 만들기
 		Stream<String> stream7 = Stream.of(new String[] {"BB", "a", "0", "라", "CC", "3", "dd", "bb", "A", "가", "마"});
 		stream7.sorted(String.CASE_INSENSITIVE_ORDER.reversed()).forEach(i -> System.out.print(i + " "));
 		System.out.println();
